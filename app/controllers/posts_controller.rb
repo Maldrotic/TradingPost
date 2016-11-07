@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_filter :authorize
+  before_action :authorize
 
   def show_all
     if params[:user_id]

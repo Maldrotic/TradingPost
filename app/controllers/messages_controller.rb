@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
 
-  before_filter :authorize
+  before_action :authorize
 
   def new
     @post = Post.find_by_id(params[:post_id])
