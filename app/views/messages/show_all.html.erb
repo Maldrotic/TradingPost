@@ -1,53 +1,59 @@
 <h1>Messages</h1>
 
 <div class="panel panel-default">
-  <h2>Recieved</h2>
-  <hr>
-  <% if @current_user.received_messages.size > 0 %>
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>From</th>
-          <th>Regarding</th>
-          <th>Recieved</th>
-        </tr>
-      </thead>
-      <% @current_user.received_messages.each do |message| %>
-        <tr class="<%= 'warning' unless message.is_read %>">
-          <td><%= message.sender.username %></td>
-          <td><%= message.post.title %></td>
-          <td><%= message.created_at.strftime('%m-%d-%Y') %> at <%= message.created_at.strftime('%H:%M') %></td>
-        </tr>
-      <% end %>
-    </table>
-  <% else %>
-    <h3>You have no recieved messages.</h3>
-  <% end %>
-</div>
-
-<div class="panel panel-default">
-  <h2>Sent</h2>
-  <hr>
-  <% if @current_user.sent_messages.size > 0 %>
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>To</th>
-          <th>Regarding</th>
-          <th>Sent</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @current_user.sent_messages.each do |message| %>
+  <div class="panel-heading">
+    <div class="panel-title">Received - <%= @current_user.received_messages.where(is_read: false).count %> unread <%= @current_user.received_messages.where(is_read:false).count == 1 ? 'message' : 'messages' %></div>
+  </div>
+  <div class="panel-body">
+    <% if @current_user.received_messages.size > 0 %>
+      <table class="table table-striped table-hover">
+        <thead>
           <tr>
-            <td><%= message.receiver.username %></td>
-            <td><%= message.post.title %> <small>for</small> $<%= message.post.price %></td>
+            <th>From</th>
+            <th>Regarding</th>
+            <th>Recieved</th>
+          </tr>
+        </thead>
+        <% @current_user.received_messages.order(created_at: :desc).each do |message| %>
+          <tr class="clickable-row <%= 'warning' unless message.is_read %>" data-href="/messages/show/<%= message.id %>">
+            <td><%= message.sender.username %></td>
+            <td><%= message.post.title %></td>
             <td><%= message.created_at.strftime('%m-%d-%Y') %> at <%= message.created_at.strftime('%H:%M') %></td>
           </tr>
         <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <h3>You have no sent messages.</h3>
-  <% end %> 
+      </table>
+    <% else %>
+      <h3>You have no recieved messages.</h3>
+    <% end %>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">Sent</div>
+  </div>
+  <div class="panel-body">
+    <% if @current_user.sent_messages.size > 0 %>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>To</th>
+            <th>Regarding</th>
+            <th>Sent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @current_user.sent_messages.order(created_at: :desc).each do |message| %>
+            <tr class="clickable-row" data-href="/messages/show/<%= message.id %>">
+              <td><%= message.receiver.username %></td>
+              <td><%= message.post.title %> <small>for</small> $<%= message.post.price %></td>
+              <td><%= message.created_at.strftime('%m-%d-%Y') %> at <%= message.created_at.strftime('%H:%M') %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h3>You have no sent messages.</h3>
+    <% end %> 
+  </div>
 </div>

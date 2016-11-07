@@ -39,15 +39,17 @@ class MessagesController < ApplicationController
   end
 
   def show
-    user = current_user
     message_id = params[:id]
     @message = Message.find_by_id(message_id)
     if !@message
       flash[:unknown_message_id] = 'There is no message with that ID.'
       redirect_to '/messages'
-    elsif @message.sender.id != user.id or @message.receiver.id != user.id
+    elsif @message.sender.id != @current_user.id and @message.receiver.id != @current_user.id
       flash[:no_permission_to_message] = 'You do not have permission to this message.'
       redirect_to '/messages'
+    else
+      @message.is_read = true
+      @message.save
     end
   end
 

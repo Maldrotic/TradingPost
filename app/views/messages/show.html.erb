@@ -1,6 +1,3 @@
-<h1>Show message</h1>
+<h3>Message <%= @message.sender.id == @current_user.id ? 'to' : 'from' %> <a href="/users/<%= @message.sender.id %>"><%= @message.sender.username %></a> about <a href="/posts/show/<%= @message.post.id %>"><%= @message.post.title %></a></h3>
 
-<h3>Message to <%= @message.post.user.username %> about <%= @message.post.title %> from <%= @message.user.username %></h3>
-
-<h4>Message:</h4>
 <p><%= @message.text %></p>
