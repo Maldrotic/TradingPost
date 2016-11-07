@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
+  def unread_message_count
+    return Message.where(post_user_id: @current_user.id, is_read: false)
+  end
+  helper_method :unread_message_count
+
 end

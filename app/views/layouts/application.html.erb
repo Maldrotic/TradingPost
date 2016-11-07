@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Instrumenttrade</title>
+    <title>Instrument Trade</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -24,12 +24,15 @@
               <ul class="dropdown-menu">
                 <li><a href="/posts">All Posts</a></li>
                 <li><a href="/users/<%= current_user.id %>/posts">My Posts</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="/posts/new">Create Post</a></li>
               </ul>
             </li>
           </ul>
         <% end %>
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
+            <li><a href="/messages"><span class="glyphicon glyphicon-envelope"></span> <%= @current_user.received_messages.where(is_read: false).count %></a></li>
             <li><p class="navbar-text">Welcome, <a href="/users/<%= current_user.id %>" class="navbar-link"><%= current_user.username %></a></p></li>
             <li><a href="/logout">Logout</a></li>
           <% else %>

@@ -21,4 +21,9 @@ Rails.application.routes.draw do
   post '/posts', to: 'posts#create' 
   get '/users/:user_id/posts', to: 'posts#show_all'
 
+  get '/messages', to: 'messages#show_all'
+  get '/messages/show/:id', to: 'messages#show'
+  get '/posts/:post_id/messages/new', to: 'messages#new'
+  post '/posts/:post_id/messages', to: 'messages#create'
+
 end

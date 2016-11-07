@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.matchHeight
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function() {
+    $('.same-height').matchHeight();
+});

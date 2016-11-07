@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(user_id)
     @posts = nil
     unless @user.nil?
-      @posts = Post.find_by_user_id(user_id)
+      @posts = Post.where(user_id: @user.id)
     else
       flash[:unknown_user_id] = "That is not a know user ID."
       redirect_to '/posts'

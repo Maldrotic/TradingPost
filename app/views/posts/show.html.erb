@@ -1,8 +1,17 @@
-<div class="col-lg-12">
+<div class="col-lg-8 col-lg-offset-2">
   <% if @post %>
-    <h1><%= @post.title %></h1>
+    <h1><%= @post.title %> <small>for</small> $<%= @post.price %></h1>
+    <img src="<%= @post.image_url %>" class="img-thumbnail" alt="image">
+    <br>
+    <br>
     <p><%= @post.description %></p>
-    <p>$<%= @post.price %>.00</p> 
+    <br>
+    <p>Posted by <a class="text-info" href="/users/<%= @post.user.id %>"><%= @post.user.username %></a> on <%= @post.created_at.strftime('%m-%d-%Y') %> at <%= @post.created_at.strftime('%H:%M') %></p>
+    <br>
+    <br>
+    <% if @post.user.id != @current_user.id %>
+      <a href="/posts/<%= @post.id %>/messages/new" class="btn btn-primary">Reply</a>
+    <% end %>
   <% else %>
     <h1>Post does not exist!</h1>
   <% end %>
