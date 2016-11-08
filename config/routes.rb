@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post '/posts', to: 'posts#create' 
   get '/users/:user_id/posts', to: 'posts#show_all'
   get '/posts/delete/:id', to: 'posts#destroy'
+  get '/instruments/:instrument_id/posts', to: 'posts#show_posts_for_instrument'
 
   get '/messages', to: 'messages#show_all'
   get '/messages/show/:id', to: 'messages#show'
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
 
   get '/categories/new', to: 'categories#new'
   post '/categories', to: 'categories#create'
-  get '/categories/show/:id', to: 'categories#show'
+  get '/categories/show/:category_id', to: 'categories#show'
   get '/categories', to: 'categories#show_all'
 
   get '/categories/:category_id/instruments/new', to: 'instruments#new'

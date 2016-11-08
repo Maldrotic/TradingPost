@@ -29,6 +29,20 @@ class PostsController < ApplicationController
   end
 
   def search
+
+  end
+
+  def show_posts_for_instrument
+    instrument_id = params[:instrument_id]
+    @instrument = Instrument.find_by_id(instrument_id)
+
+    if !@instrument
+      flash[:unknown_instrument_id] = 'There is no instrument with that id.'
+      redirect_to '/posts'
+    else
+      @posts = @instrument.posts
+      render "show_all"
+    end
   end
 
   def create

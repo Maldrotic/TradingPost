@@ -11,9 +11,11 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
-  def unread_message_count
-    return Message.where(post_user_id: @current_user.id, is_read: false)
+  def pluralize_without_count(count, noun, text = nil)
+    if count != 0
+      count == 1 ? "#{noun}#{text}" : "#{noun.pluralize}#{text}"
+    end
   end
-  helper_method :unread_message_count
-
+  helper_method :pluralize_without_count
+  
 end

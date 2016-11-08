@@ -1,5 +1,7 @@
 <% if @user %>
   <h1><%= @user.username %>'s Posts</h1>
+<% elsif @instrument %>
+  <h1><%= pluralize_without_count(2, @instrument.name) %></h1>
 <% else %>
   <h1>All Posts</h1>
 <% end %>
