@@ -6,6 +6,10 @@
   <h1>All Posts</h1>
 <% end %>
 
+<% if @query %>
+  <h2>Searching for "<%= @query %>"</h2>
+<% end %>
+
 <hr>
 
 <%= render "list" %>

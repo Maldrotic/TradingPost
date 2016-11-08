@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get '/posts/delete/:id', to: 'posts#destroy'
   get '/instruments/:instrument_id/posts', to: 'posts#show_posts_for_instrument'
 
+  get '/posts/search', to: 'posts#search'
+
   get '/messages', to: 'messages#show_all'
   get '/messages/show/:id', to: 'messages#show'
   get '/posts/:post_id/messages/new', to: 'messages#new'

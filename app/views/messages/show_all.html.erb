@@ -2,7 +2,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title">Received - <%= @current_user.received_messages.where(is_read: false).count %> unread <%= @current_user.received_messages.where(is_read:false).count == 1 ? 'message' : 'messages' %></div>
+    <div class="panel-title">Received - <%= pluralize(@current_user.received_messages.where(is_read: false).count, 'unread message') %></div>
   </div>
   <div class="panel-body">
     <% if @current_user.received_messages.size > 0 %>

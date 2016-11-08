@@ -15,8 +15,24 @@ class PostsController < ApplicationController
         flash[:no_posts_for_user] = 'This user has no posts.'
         redirect_to '/posts'
       end
-    else 
+    elsif params[:instrument_id] != ""
+      instrument_id = params[:instrument_id]
+      @instrument = Instrument.find_by_id(instrument_id)
+
+      if @instrument.nil?
+        flash[:unknown_instrument_id] = 'There is no instrument with that id.'
+        redirect_to '/posts/search'
+        return
+      else
+        @posts = @instrument.posts
+      end
+    else
       @posts = Post.all
+    end
+
+    if params[:q]
+      @query = params[:q]
+      @posts = @posts.where('title like ?', "%#{@query}%")
     end
   end
 
@@ -29,7 +45,7 @@ class PostsController < ApplicationController
   end
 
   def search
-
+    @categories = Category.all
   end
 
   def show_posts_for_instrument

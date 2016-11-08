@@ -1,0 +1,86 @@
+<h1>Search Posts</h1>
+
+<h2>Search by keyword</h2>
+<form action="/posts" method="get" class="form-horizontal">
+  <fieldset>
+    <div class="form-group">
+      <label for="q" class="col-lg-2 control-label">Keyword</label>
+      <div class="col-lg-8">
+        <input type="text" class="form-control" id="q" name="q" placeholder="Search for...">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-8 col-lg-offset-2">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<br>
+<h3>Or</h3>
+<br>
+
+<h2>Search by instrument</h2>
+<form action="/posts" method="get" class="form-horizontal">
+  <fieldset>
+    <div class="form-group">
+      <label for="instrument_id" class="col-lg-2 control-label">Instrument</label>
+      <div class="col-lg-8">
+        <select class="form-control" name="instrument_id" id="instrument_id">
+          <option value="">Select an instrument</option>
+          <% @categories.each do |category| %>
+            <optgroup label="<%= category.name %>">
+              <% category.instruments.each do |instrument| %>
+                <option value="<%= instrument.id %>"><%= instrument.name %></option>
+              <% end %>
+            </optgroup>
+          <% end %>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-8 col-lg-offset-2">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+
+<br>
+<h3>Or Both!</h3>
+<br>
+
+<div class="col-lg-12">
+  <form action="/posts" method="get" class="form-horizontal">
+    <fieldset>
+      <div class="form-group">
+        <label for="q" class="col-lg-2 control-label">Keyword</label>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="q" name="q" placeholder="Search for...">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="instrument_id" class="col-lg-2 control-label">Instrument</label>
+        <div class="col-lg-8">
+          <select class="form-control" name="instrument_id" id="instrument_id">
+            <option value="">Select an instrument</option>
+            <% @categories.each do |category| %>
+              <optgroup label="<%= category.name %>">
+                <% category.instruments.each do |instrument| %>
+                  <option value="<%= instrument.id %>"><%= instrument.name %></option>
+                <% end %>
+              </optgroup>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-8 col-lg-offset-2">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
