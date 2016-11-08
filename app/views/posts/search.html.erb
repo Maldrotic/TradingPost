@@ -13,7 +13,7 @@
         <label for="instrument_id" class="col-lg-3 control-label">Instrument</label>
         <div class="col-lg-6">
           <select class="form-control" name="instrument_id" id="instrument_id">
-            <option value="">Select an instrument</option>
+            <option value=""></option>
             <% @categories.each do |category| %>
               <optgroup label="<%= category.name %>">
                 <% category.instruments.each do |instrument| %>
