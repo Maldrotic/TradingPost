@@ -48,8 +48,10 @@ class MessagesController < ApplicationController
       flash[:no_permission_to_message] = 'You do not have permission to this message.'
       redirect_to '/messages'
     else
-      @message.is_read = true
-      @message.save
+      if @message.receiver.id == @current_user.id
+        @message.is_read = true
+        @message.save
+      end
     end
   end
 

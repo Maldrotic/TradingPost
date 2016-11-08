@@ -25,6 +25,10 @@ class PostsController < ApplicationController
   end
 
   def new
+    @categories = Category.all
+  end
+
+  def search
   end
 
   def create
@@ -44,7 +48,7 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:title, :description, :image_url, :price, :user_id)
+      params.require(:post).permit(:title, :instrument_id, :description, :image_url, :price, :user_id)
     end
   
 end

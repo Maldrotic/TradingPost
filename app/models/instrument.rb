@@ -1,3 +1,6 @@
 class Instrument < ApplicationRecord
-  validates :name, :type, presence: true
+  belongs_to :category
+  has_many :posts, dependent: :destroy
+
+  validates :name, presence: true
 end

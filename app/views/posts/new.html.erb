@@ -9,6 +9,21 @@
         </div>
       </div>
       <div class="form-group">
+        <%= f.label :instrument_id, 'Instrument', class: 'col-lg-2 control-label' %>
+        <div class="col-lg-8">
+          <select class="form-control" name="post[instrument_id]" id="instrument_id">
+            <option value="">Select an instrument</option>
+            <% @categories.each do |category| %>
+              <optgroup label="<%= category.name %>">
+                <% category.instruments.each do |instrument| %>
+                  <option value="<%= instrument.id %>"><%= instrument.name %></option>
+                <% end %>
+              </optgroup>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
         <%= f.label :description, 'Description', class: 'col-lg-2 control-label' %>
         <div class="col-lg-8">
           <%= f.text_area :description, class: 'form-control' %>

@@ -20,10 +20,18 @@ Rails.application.routes.draw do
   get '/posts/new', to: 'posts#new'
   post '/posts', to: 'posts#create' 
   get '/users/:user_id/posts', to: 'posts#show_all'
+  get '/posts/delete/:id', to: 'posts#destroy'
 
   get '/messages', to: 'messages#show_all'
   get '/messages/show/:id', to: 'messages#show'
   get '/posts/:post_id/messages/new', to: 'messages#new'
   post '/posts/:post_id/messages', to: 'messages#create'
 
+  get '/categories/new', to: 'categories#new'
+  post '/categories', to: 'categories#create'
+  get '/categories/show/:id', to: 'categories#show'
+  get '/categories', to: 'categories#show_all'
+
+  get '/categories/:category_id/instruments/new', to: 'instruments#new'
+  post '/categories/:category_id/instruments', to: 'instruments#create'
 end

@@ -1,0 +1,9 @@
+<h1><%= @category.name %></h1>
+
+<% if @category.instruments %>
+  <% @category.instruments.each do |instrument| %>
+    <h2><%= instrument.name %></h2>
+  <% end %>
+<% else %>
+  <h2>No instruments</h2>
+<% end %>

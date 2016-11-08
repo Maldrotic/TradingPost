@@ -1,6 +1,6 @@
-<%= form_for :instrument, url: '/categories/'+@category.id.to_s+'/instruments', :html => {:class => 'form-horizontal'} do |f| %>
+<%= form_for :category, url: '/categories', :html => {:class => 'form-horizontal'} do |f| %>
   <fieldset>
-    <legend>New Instrument <small>for</small> <%= @category.name %></legend>
+    <legend>New Category</legend>
     <div class="form-group">
       <%= f.label :name, class: 'col-lg-2 control-label' %>
       <div class="col-lg-8">

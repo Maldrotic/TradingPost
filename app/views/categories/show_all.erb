@@ -1,0 +1,35 @@
+<div class='col-lg-2'>
+  <h1>Categories</h1>
+</div>
+
+<div class="col-lg-2 col-lg-offset-8">
+  <a href="/categories/new" class="btn btn-primary">Add Category</a>
+</div>
+
+<div class="col-lg-12">
+  <% if @categories %>
+    <% @categories.each do |category| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <%= category.name %>
+          </div>
+        </div>
+        <div class="panel-body">
+          <% if !category.instruments.empty? %>
+            <% category.instruments.each do |instrument| %>
+              <h4><%= instrument.name %></h4>
+            <% end %>
+          <% else %>
+            <h4>No instruments</h4>
+          <% end %>
+        </div>
+        <div class="panel-footer">
+          <a href="/categories/<%= category.id %>/instruments/new" class="btn btn-primary">Add Instrument</a>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <h2>No Categories</h2>
+  <% end %>
+</div>
