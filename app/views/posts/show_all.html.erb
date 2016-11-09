@@ -6,8 +6,15 @@
   <h1>All Posts</h1>
 <% end %>
 
-<% if @query and @query != "" %>
+<% if @query %>
   <h2>Searching for "<%= @query %>"</h2>
+<% end %>
+
+<% if @price_min %>
+  <h3>Minimum Price: $<%= @price_min %></h3>
+<% end %>
+<% if @price_max %>
+  <h3>Maximum Price: $<%= @price_max %></h3>
 <% end %>
 
 <hr>

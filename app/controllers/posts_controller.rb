@@ -15,7 +15,7 @@ class PostsController < ApplicationController
         flash[:no_posts_for_user] = 'This user has no posts.'
         redirect_to '/posts'
       end
-    elsif params[:instrument_id] != ""
+    elsif params[:instrument_id] != "" and params[:instrument_id].to_i > 0
       instrument_id = params[:instrument_id]
       @instrument = Instrument.find_by_id(instrument_id)
 
@@ -30,9 +30,38 @@ class PostsController < ApplicationController
       @posts = Post.all
     end
 
-    if params[:q]
+    if !params[:q].blank?
       @query = params[:q]
       @posts = @posts.where('title like ?', "%#{@query}%")
+    end
+
+    if params[:price_min] != "" and params[:price_min].to_i > 0
+      @price_min = params[:price_min].to_i
+    end
+    if params[:price_max] != "" and params[:price_max].to_i > 0
+      @price_max = params[:price_max].to_i
+    end
+    if @price_min and @price_max
+      if @price_min > @price_max
+        flash[:incorrect_prices] = 'The maximum price must be greater than or equal to the minimum price.'
+        redirect_to '/posts/search'
+      else
+        @posts = @posts.where(price: @price_min..@price_max)
+      end
+    elsif @price_min
+      if @price_min < 1
+        flash[:incorrect_min_price] = 'The minimum price must be greater than 0.'
+        redirect_to '/posts/search'
+      else
+        @posts = @posts.where('price >= ?', @price_min)
+      end
+    elsif @price_max
+      if @price_max < 1
+        flash[:incorrect_max_price] = 'The maximum price must be greater than 0.'
+        redirect_to '/posts/search'
+      else 
+        @posts = @posts.where('price <= ?', @price_max)
+      end
     end
   end
 
