@@ -9,7 +9,9 @@ $(document).ready ->
     columnWidth: '.grid-sizer'
     percentPosition: true)
 
-  $('.lazy-load-img').lazyload()
+  $('.lazy-load-img').lazyload(
+    threshold: 200
+    )
 
   $('.lazy-load-img').load ->
     $grid.imagesLoaded().progress ->
