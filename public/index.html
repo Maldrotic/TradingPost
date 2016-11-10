@@ -123,6 +123,97 @@
               </ol>
               NOTE: Also this user story came out a little different. Although it still ends up doing the same thing, it's not necessarily guided. I made it so that from the search field, the user can use any combination of filters (keyword on title, instrument type, minimum price, and maximum price) and depending on what is selected will result in a different list. The search results view will display what parameters are used to filter the posts.
             </dd>
+            <br>
+            <dt>Req. Checklist</dt>
+            <dd>
+              <ul class="list-unstyled">
+                <li>
+                  Controllers
+                  <ul>
+                    <li>CategoriesController</li>
+                    <li>InstrumentsController</li>
+                    <li>MessagesController</li>
+                    <li>PostsController</li>
+                    <li>SessionsController</li>
+                    <li>UsersController</li>
+                  </ul>
+                </li>
+                <li>
+                  Models
+                  <ul>
+                    <li>Category</li>
+                    <li>Instrument</li>
+                    <li>Message</li>
+                    <li>Post</li>
+                    <li>User</li>
+                  </ul>
+                </li>
+                <li>
+                  Views
+                  <ul>
+                    <li>
+                      Categories
+                      <ul>
+                        <li>new</li>
+                        <li>show</li>
+                        <li>show_all</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Instruments
+                      <ul>
+                        <li>new</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Messages
+                      <ul>
+                        <li>new</li>
+                        <li>show</li>
+                        <li>show_all</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Posts
+                      <ul>
+                        <li>_list</li>
+                        <li>new</li>
+                        <li>search</li>
+                        <li>show</li>
+                        <li>show_all</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Sessions
+                      <ul>
+                        <li>new</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Users
+                      <ul>
+                        <li>new</li>
+                        <li>show</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Javascripts
+                  <ul>
+                    <li>posts.coffee</li>
+                    <li>messages.coffee</li>
+                  </ul>
+                </li>
+                <li>
+                  Stylesheets (although the majority of the project is using bootstrap, there were a few additions I had to make)
+                  <ul>
+                    <li>messages.scss</li>
+                    <li>users.scss</li>
+                  </ul>
+                </li>
+              </ul>
+            </dd>
           </dl>
         </div>  
       </div>
