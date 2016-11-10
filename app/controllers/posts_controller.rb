@@ -63,6 +63,8 @@ class PostsController < ApplicationController
         @posts = @posts.where('price <= ?', @price_max)
       end
     end
+
+    @posts = @posts.order(created_at: :asc)
   end
 
   def show

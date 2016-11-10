@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Instrument Trade - Index</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="container" style="margin-top: 60px;">
+      <div class="col-lg-12">
+        <div class="jumbotron">
+          <h1 class="text-center">Welcome to Instrument Trade</h1>
+
+          <blockquote>
+            <p>It's easy to play any musical instrument: all you have to do is touch the right key at the right time and the instrument will play itself.</p>
+            <small>Johann Sebastian Bach</small>
+          </blockquote>
+          
+          <dl class="dl-horizontal">
+            <dt>Author</dt>
+            <dd>Ryan Gahart</dd>
+            <br>
+            <dt>Description</dt>
+            <dd>Using this site allows users to post musical instruments up for sale to everyone. Users post a picture of their instrument as well as a title, price, and description. Other users can reply to the post with a message. Users can search by keyword and price, as well as filter by instrument, or all at once.</dd>
+            <br>
+            <dt>Initial Setup Commands</dt>
+            <dd>
+              <code>rake db:setup</code>: This will create the database, load the schema and initialize it with seed data
+            </dd>
+            <br>
+            <dt>Start Here</dt>
+            <dd><a href="/login">Login</a> with an email and password from the valid users list. After logging in, you will be brought to the <a href="/posts">posts</a> page. This lists all posts in the database ordered by their created date.</dd>
+            <br>
+            <dt>Whats Next</dt>
+            <dd>From the <a href="/posts">posts</a> page, you can click the posts dropdown from the nav bar to go to all posts or your posts. You can also select search posts to be brought to the search view. You can also create a new post. On the right side of the nav is a button to get to your <a href="/messages">messages</a>, it also shows a count of your unread messages. Further you can view your profile and logout.</dd>
+            <br>
+            <dt>Extras</dt>
+            <dd>There is no button to reach the <a href="/categories">categories</a> endpoint, but that is because it is meant to be an administrative view. From here you can add new categories of instruments as well as give a category a new type of instrument.</dd>
+            <br>
+            <dt>Valid Users</dt>
+            <dd>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Email</th>
+                    <th>Password</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>jon.snow@gmail.com</td>
+                    <td>password</td>
+                  </tr>
+                  <tr>
+                    <td>tony.stark@gmail.com</td>
+                    <td>ironman</td>
+                  </tr>
+                  <tr>
+                    <td>django@gmail.com</td>
+                    <td>unchained</td>
+                  </tr>
+                </tbody>
+              </table>
+            </dd>
+            <br>
+            <dt>User Story 1 Validation</dt>
+            <dd>
+              As a musician, I would like to be able to search for a specific item for sale so that I can determine if I would like to contact them about an offer.
+              <br>
+              <br>
+              Steps:
+              <ol>
+                <li>Make sure that database is seeded</li>
+                <li>Login to an account</li>
+                <li>Navigate to 'Search Posts'</li>
+                <li>Select 'Electric guitar' from the instrument list</li>
+                <li>Click 'Search' button</li>
+                <li>Verify that posts in the list have the are actual guitars</li>
+              </ol>
+              NOTE: This user story was slightly modified. I ended up having multiple ways to search for a post. Either by entering in a keyword that would match to the post's title, by selecting the type of instrument (in this case, an electric guitar), or by price.
+            </dd>
+            <br>
+            <dt>User Story 2 Validation</dt>
+            <dd>
+              As a musician, I would like to be able to send an offer to another user so that I can start a chain of communication resulting the purchase or trade for my desired instrument or gear.
+              <br>
+              <br>
+              Steps:
+              <ol>
+                <li>Login to an account</li>
+                <li>Navigate to 'All Posts'</li>
+                <li>Click on desired post (created by another user)</li>
+                <li>Scroll to bottom and click 'Reply' button</li>
+                <li>Enter desired message</li>
+                <li>Click 'Send' button</li>
+                <li>Logout of account</li>
+                <li>Login to account that message was sent to</li>
+                <li>Navigate to messages (by clicking mail icon with 1 unread message badge)</li>
+                <li>Note that new received message's background has an orange tint</li>
+                <li>Click message to view contents</li>
+                <li>Verify that it is the message that was originally sent</li>
+              </ol>
+            </dd>
+            <br>
+            <dt>User Story 3 Validation</dt>
+            <dd>
+              The system takes them through a guided search. The system will ask what kind of instrument they are looking for, then the user will select guitar, or a different instrument. Then the system will ask what kind of guitar they are looking for, or they can bring up the results from there. Depending on the instrument, the system will go through more categories. These categories ultimately will be added by the user so that the system doesn't have to update its own data.
+              <br>
+              <br>
+              Steps:
+              <ol>
+                <li>Login to an account</li>
+                <li>Navigate to 'Search Posts'</li>
+                <li>Select the desired instrument from the instrument select input</li>
+                <li>Click 'Search'</li>
+                <li>The resulting list shows all posts of that instrument</li>
+              </ol>
+              NOTE: Also this user story came out a little different. Although it still ends up doing the same thing, it's not necessarily guided. I made it so that from the search field, the user can use any combination of filters (keyword on title, instrument type, minimum price, and maximum price) and depending on what is selected will result in a different list. The search results view will display what parameters are used to filter the posts.
+            </dd>
+          </dl>
+        </div>  
+      </div>
+    </div>
+  </body>
+
+</html>

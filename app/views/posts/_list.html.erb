@@ -1,24 +1,27 @@
-<% if @posts %>
-  <ul class="list-unstyled">
-    <% @posts.each do |post| %>
-      <li class="col-lg-4">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title"><a href="/posts/show/<%= post.id %>"><%= post.title %></a> - $<%= post.price %></h3>
-          </div>
-          <div class="panel-body">
-            <img src="<%= post.image_url %>" class="img-thumbnail" alt="image">
-            <br>
-            <br>
-            <%= post.description %>
-          </div>
-          <div class="panel-footer">
-            Posted by <a class="text-info" href="/users/<%= post.user.id %>"><%= post.user.username %></a> on <%= post.created_at.strftime('%m-%d-%Y') %> at <%= post.created_at.strftime('%H:%M') %>
+<% if @posts and @posts.any? %>
+  <div class="grid">
+    <div class="grid-sizer col-lg-4"></div>
+    <% @posts.each_with_index do |post, index| %>
+      <div class="grid-item col-lg-4">
+        <div class="grid-item-content">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><a href="/posts/show/<%= post.id %>"><%= post.title %></a> - $<%= post.price %></h3>
+            </div>
+            <div class="panel-body">
+              <img src="/grey.gif" data-original="<%= post.image_url %>" class="img-thumbnail lazy-load-img" alt="image" height="300" width="100%">
+              <br>
+              <br>
+              <%= post.description %>
+            </div>
+            <div class="panel-footer">
+              Posted by <a class="text-info" href="/users/<%= post.user.id %>"><%= post.user.username %></a> on <%= post.created_at.strftime('%m-%d-%Y') %> at <%= post.created_at.strftime('%H:%M') %>
+            </div>
           </div>
         </div>
-      </li>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% else %>
   <h2>There are no posts</h2>
 <% end %>

@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     if current_user
-      redirect_to '/'
+      redirect_to '/posts'
     end
   end
 
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to '/login'
     elsif user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to '/'
+      redirect_to '/posts'
     else
       flash[:wrong_password] = 'Incorrect password'
       redirect_to '/login'
