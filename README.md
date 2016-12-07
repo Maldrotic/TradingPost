@@ -1,10 +1,7 @@
 # TradingPost
----
-
 Buy, sell, and trade musical instruments with other musicians.
 
 ## Screenshots:
----
 ### Home Page
 ![home page](http://i.imgur.com/bBCCcD7.png "Home Page")
 
