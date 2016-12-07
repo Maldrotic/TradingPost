@@ -1,24 +1,15 @@
-# README
+# TradingPost
+---
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Buy, sell, and trade musical instruments with other musicians.
 
-Things you may want to cover:
+## Screenshots:
+---
+### Home Page
+![home page](http://i.imgur.com/bBCCcD7.png "Home Page")
 
-* Ruby version
+### Profile and related posts
+![profile](http://i.imgur.com/TtJWSmC.png "Profile and related posts")
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Messages
+![messages](http://i.imgur.com/SZ0PUHG.png "Messages")
